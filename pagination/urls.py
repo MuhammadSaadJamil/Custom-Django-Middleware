@@ -24,4 +24,6 @@ urlpatterns = [
     path('data/delete', clean_db, name='del-data'),
     path('list/func', people_list, name='func-list'),
     path('list/class', person_list, name='class-list'),
+    path('login', login, name='login'),
+    path('logout', logout, name='logout')
 ]

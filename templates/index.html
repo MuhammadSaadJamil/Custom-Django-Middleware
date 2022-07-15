@@ -2,13 +2,13 @@
 
 {% block style %}
     <style>
-    .options ul{
-        display: flex;
-        list-style: none;
-        width: 45%;
-        justify-content: space-between;
+        .options ul {
+            display: flex;
+            list-style: none;
+            width: 50%;
+            justify-content: space-between;
 
-    }
+        }
 
 
     </style>
@@ -24,6 +24,7 @@
                 <li><a class="btn" href="{% url 'func-list' %}">Func list</a></li>
                 <li><a class="btn" href="{% url 'class-list' %}">Class list</a></li>
                 <li><a class="btn" href="{% url 'admin:index' %}">Admin</a></li>
+                <li><a class="btn" href="{% url 'logout' %}">Logout</a></li>
             </ul>
         </div>
     </div>

@@ -1,6 +1,7 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView
 from faker import Faker
 from .models import *
@@ -72,3 +73,19 @@ def people_list(request):
 def clean_db(request):
     Person.objects.all().delete()
     return redirect(reverse('index'))
+
+
+class Login(LoginView):
+    template_name = 'login.html'
+    redirect_authenticated_user = True
+    next_page = reverse_lazy('index')
+
+
+login = Login.as_view()
+
+
+class Logout(LogoutView):
+    next_page = reverse_lazy('login')
+
+
+logout = Logout.as_view()
