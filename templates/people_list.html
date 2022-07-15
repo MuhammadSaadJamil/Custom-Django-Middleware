@@ -1,0 +1,96 @@
+{% extends 'main.html' %}
+
+{% block style %}
+    <style>
+        .pagination {
+            display: flex;
+            min-width: 25%;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .pagination li {
+            border: 0.5px solid black;
+            padding: 0.2rem 0.5rem;
+            font-size: 1.5rem;
+
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: brown;
+        }
+
+        .active {
+            background: bisque;
+
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="top-links">
+            <a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+        </div>
+        <div class="list">
+            <div class="person">
+                {% for person in object_list %}
+                    <h3 class="name">{{ person.name }}</h3>
+                    <p class="phone">{{ person.mobile }}</p>
+                {% endfor %}
+            </div>
+            {% if not func %}
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="active"><span>{{ i }}</span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+
+
+{#                code for function based view        #}
+
+
+            {% else %}
+                {% if users.has_other_pages %}
+                    <ul class="pagination">
+                        {% if users.has_previous %}
+                            <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in users.paginator.page_range %}
+                            {% if users.number == i %}
+                                <li class="active"><span>{{ i }}</span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if users.has_next %}
+                            <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
