@@ -1,16 +1,43 @@
 {% extends 'main.html' %}
 
+{% block style %}
+    <style>
+    .options ul{
+        display: flex;
+        list-style: none;
+        width: 35%;
+        justify-content: space-between;
+
+    }
+        .btn {
+            color: brown;
+            background: bisque;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid brown;
+            border-radius: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:hover{
+            color: bisque;
+            background: brown;
+        }
+
+
+    </style>
+{% endblock %}
+
 {% block content %}
 
-    <div class="center">
-    <div class="options">
-        <ul>
-            <li><a class="btn btn-primary" href="{% url 'gen-data' %}">Generate Data</a></li>
-            <li><a href="admin/">Admin</a></li>
-            <li><a href="{% url 'func-list' %}">Func list</a></li>
-            <li><a href="{% url 'class-list' %}">Class list</a></li>
-        </ul>
-    </div>
+    <div class="container">
+        <div class="options">
+            <ul>
+                <li><a class="btn" href="{% url 'gen-data' %}">Generate Data</a></li>
+                <li><a class="btn" href="admin/">Admin</a></li>
+                <li><a class="btn" href="{% url 'func-list' %}">Func list</a></li>
+                <li><a class="btn" href="{% url 'class-list' %}">Class list</a></li>
+            </ul>
+        </div>
     </div>
 
 {% endblock %}
