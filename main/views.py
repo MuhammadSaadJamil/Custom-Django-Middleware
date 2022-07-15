@@ -1,9 +1,22 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from faker import Faker
 from .models import *
+
+
+class Index(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['title'] = 'Main'
+        data['header'] = 'Main Menu'
+        return data
+
+
+index = Index.as_view()
 
 
 def generate_data(request):
