@@ -27,7 +27,7 @@ def generate_data(request):
             name=fake.name(),
             mobile=fake.phone_number()
         )
-    return redirect(reverse('index'))
+    return redirect(reverse('func-list'))
 
 
 class PersonList(ListView):
@@ -72,7 +72,7 @@ def people_list(request):
 
 def clean_db(request):
     Person.objects.all().delete()
-    return redirect(reverse('index'))
+    return redirect(reverse('func-list'))
 
 
 class Login(LoginView):
