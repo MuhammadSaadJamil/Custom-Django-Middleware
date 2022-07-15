@@ -67,3 +67,8 @@ def people_list(request):
 
     }
     return render(request, 'people_list.html', data)
+
+
+def clean_db(request):
+    Person.objects.all().delete()
+    return redirect(reverse('index'))

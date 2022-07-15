@@ -20,7 +20,8 @@ from main.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('generateData/', generate_data, name='gen-data'),
+    path('data/generate', generate_data, name='gen-data'),
+    path('data/delete', clean_db, name='del-data'),
     path('list/func', people_list, name='func-list'),
     path('list/class', person_list, name='class-list'),
 ]
