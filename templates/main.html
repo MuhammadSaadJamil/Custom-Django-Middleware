@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: bisque;
+            color: brown;
+            min-height: 8rem;
+            width: 100%;
+        }
+        .footer{
+            position: absolute;
+            bottom: 0;
+            min-height: 5rem;
+            background: bisque;
+            width: 100%;
+        }
+    </style>
+
     {% block style %}
     {% endblock %}
 </head>
